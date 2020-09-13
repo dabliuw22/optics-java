@@ -26,7 +26,7 @@ public class Lens<A, B> {
     }
 
     public A set(A target, B value) {
-        return setter.apply(target).apply(value);
+        return modify(target, ignored -> value);
     }
 
     public A modify(A target, Function<B, B> f) {
