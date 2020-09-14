@@ -22,15 +22,15 @@ public class Lens<A, B> {
     }
 
     public B get(A target) {
-        return getter.apply(target);
+        return this.getter.apply(target);
     }
 
     public A set(A target, B value) {
-        return modify(target, ignored -> value);
+        return this.modify(target, ignored -> value);
     }
 
     public A modify(A target, Function<B, B> f) {
-        return setter.apply(target).apply(f.apply(get(target)));
+        return this.setter.apply(target).apply(f.apply(get(target)));
     }
 
     public <C> Lens<A, C> compose(Lens<B, C> other) {
